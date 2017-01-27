@@ -26,5 +26,3 @@ def createOutputFile(minDistance, myPoints):
 	outFile.write("\n".join(map(lambda x: str(x), myPoints)))
 	outFile.write("\n")
 	outFile.close()
-
-createOutputFile(4.0, myPoints)
