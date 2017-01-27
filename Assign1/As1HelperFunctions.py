@@ -19,3 +19,12 @@ print myPoints
 
 def getMyPoints():
 	return myPoints
+
+def createOutputFile(minDistance, myPoints):
+	outFile = open("output.txt", "w")
+	outFile.write(str(minDistance)+"\n")
+	outFile.write("\n".join(map(lambda x: str(x), myPoints)))
+	outFile.write("\n")
+	outFile.close()
+
+createOutputFile(4.0, myPoints)
