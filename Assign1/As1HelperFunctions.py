@@ -20,6 +20,8 @@ print myPoints
 def getMyPoints():
 	return myPoints
 
+#minDistance ==> float of min distance
+#myPoints ==> List of points with smallest interval
 def createOutputFile(minDistance, myPoints):
 	outFile = open("output.txt", "w")
 	outFile.write(str(minDistance)+"\n")
