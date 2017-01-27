@@ -15,6 +15,13 @@ for i in range(0, len(p)):
       coords.append([p[i], p[j]])
       dists.append(d)
 
+pairs = []
 indices = [i for i, x in enumerate(dists) if x == min(dists)]
+for z in range(0, len(indices)):
+   #print indices[z]
+   pairs.append(coords[indices[z]])
 
-#for z in range(0, len(coords)):
+pairs.sort()
+min_dist = min(dists)
+
+As1HelperFunctions.createOutputFile(min_dist, pairs)
