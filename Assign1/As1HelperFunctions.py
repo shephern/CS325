@@ -15,7 +15,7 @@ point = ();
 for i in range(0, len(content)):
 	myPoints.append([int(content[i][0]), int(content[i][2])])
 
-print myPoints
+#print myPoints
 
 def getMyPoints():
 	return myPoints
