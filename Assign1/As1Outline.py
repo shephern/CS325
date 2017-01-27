@@ -1,6 +1,10 @@
 import sys
 inputFile = sys.argv[-1]
 
+if (len(sys.argv) != 2):
+	print "USAGE: python algorithm.py file.txt"
+	exit();
+
 with open(inputFile) as f:
 	content = f.readlines()
 content = [x.strip() for x in content]
@@ -13,4 +17,5 @@ for i in range(0, len(content)):
 
 print myPoints
 
-#content = map(int, content);
+def getMyPoints():
+	return myPoints
