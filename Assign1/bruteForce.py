@@ -24,4 +24,4 @@ for z in range(0, len(indices)):
 pairs.sort()
 min_dist = min(dists)
 
-As1HelperFunctions.createOutputFile(min_dist, pairs)
+As1HelperFunctions.createOutputFile(min_dist, pairs, 0)
