@@ -1,3 +1,6 @@
+#TODO: Allow input file to contain multiple digit
+#	   coordinates and/or floating points
+
 import sys
 inputFile = sys.argv[-1]
 
@@ -12,6 +15,9 @@ content = [x.strip() for x in content]
 myPoints = []
 point = ();
 
+#TODO: This for loop grabs the first and third
+#	   character per line.
+#	   Use regular expressions instead?
 for i in range(0, len(content)):
 	myPoints.append([int(content[i][0]), int(content[i][2])])
 
