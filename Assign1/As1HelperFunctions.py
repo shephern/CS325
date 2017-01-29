@@ -25,9 +25,9 @@ def createOutputFile(minDistance, myPoints, AlgFlag):
 
 	if(AlgFlag == 0):
 		outFile = open("output_bruteforce.txt", "w")
-	else if(AlgFlag == 1):
+	elif(AlgFlag == 1):
 		outFile = open("output_divideandconquer.txt", "w")
-	else if(AlgFlag ==2):
+	elif(AlgFlag ==2):
 		outFile = open("output_enhanceddnc.txt", "w")
 	else:
 		print "Error creating output file, fix AlgFlag"
