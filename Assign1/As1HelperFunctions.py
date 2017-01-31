@@ -1,6 +1,3 @@
-#TODO: Allow input file to contain multiple digit
-#	   coordinates and/or floating points
-
 import sys
 inputFile = sys.argv[-1]
 
@@ -8,18 +5,22 @@ if (len(sys.argv) != 2):
 	print "USAGE: python algorithm.py file.txt"
 	exit();
 
-with open(inputFile) as f:
-	content = f.readlines()
-content = [x.strip() for x in content]
-
+##with open(inputFile) as f:
+##	content = f.readlines()
+##content = [x.strip() for x in content]
+##
 myPoints = []
-point = ();
+##point = ();
+##for i in range(0, len(content)):
+##	myPoints.append([int(content[i][0]), int(content[i][2])])
 
-#TODO: This for loop grabs the first and third
-#	   character per line.
-#	   Use regular expressions instead?
-for i in range(0, len(content)):
-	myPoints.append([int(content[i][0]), int(content[i][2])])
+# I was able to solve the double, multidigit problem with linesplit
+with open(inputFile) as f:
+        content = [word for line in f for word in line.split()]
+i = 0
+while i < len(content):
+        myPoints.append((float(content[i]), float(content[i+1])))
+        i = i + 2
 
 def getMyPoints():
 	return myPoints
