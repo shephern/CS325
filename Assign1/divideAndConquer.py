@@ -40,9 +40,9 @@ def DandC(coords):
 
 		elif(dist2 < dist1 and dist2 <= dist3):
 			if(dist2 == dist3):
-				return [list2, [(coords[0], coords[2]), (coords[1], coords[2])]]
+				return [dist2, [(coords[0], coords[2]), (coords[1], coords[2])]]
 
-			return [list2, [(coords[1], coords[2])]]
+			return [dist2, [(coords[1], coords[2])]]
 
 		else:
 			return [dist3, [(coords[0], coords[2])]]
