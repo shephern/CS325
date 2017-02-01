@@ -19,7 +19,7 @@ with open(inputFile) as f:
         content = [word for line in f for word in line.split()]
 i = 0
 while i < len(content):
-        myPoints.append((float(content[i]), float(content[i+1])))
+        myPoints.append([float(content[i]), float(content[i+1])])
         i = i + 2
 
 def getMyPoints():
