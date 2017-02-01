@@ -18,26 +18,61 @@ p = As1HelperFunctions.getMyPoints()
 
 sortByX = sorted(p, key=lambda x: x[1])
 
-firstHalf = []
-secHalf = []
+# if(testing):
 
-for i in range(0, len(sortByX)/2):
-	firstHalf.append(sortByX[i])
+# 	print len([1,2,3,4,5])/2
 
-for i in range(len(sortByX)/2, len(sortByX)):
-	secHalf.append(sortByX[i])
+# 	firstHalf = []
+# 	secHalf = []
+# 	for i in range(0, floor(len(sortByX)/2)):
+# 		firstHalf.append(sortByX[i])
+# 	for i in range(floor(len(sortByX)/2)), len(sortByX)):
+# 		secHalf.append(sortByX[i])
 
-if(testing):
-	print "sortByX:\n",sortByX
-	print "firstHalf:\n",firstHalf
-	print "secHalf:\n",secHalf
+# 	print "sortByX:\n",sortByX
+# 	print "firstHalf:\n",firstHalf
+# 	print "secHalf:\n",secHalf
 
 def DandC(coords):
-	print "" #so it compiles
-	#algorith here (this is actually hard)
-	#if base case
-	#	solve and return
-	#else do stuff
-	#	DandC(coords/2)
+	#Base Case: Only two points in section
+	#Find distance
+	#Recurse back, compare recursed distances
+	#Check points outside dividing line by min distance
+	#Recurse back, etc.
+
+	if(len(coords) <= 1): #Error
+		return -1;
+	elif(len(coords) == 2): #Base case
+		#pythagorean theorem to find distance
+		return sqrt(pow(coords[1][0]-coords[0][0], 2) + pow(coords[1][1]-coords[0][1], 2))
+	elif(len(coords) == 3): #Base case for odd numbers
+		return min(sqrt(pow(coords[1][0]-coords[0][0], 2) + pow(coords[1][1]-coords[0][1], 2)), \
+				   sqrt(pow(coords[2][0]-coords[1][0], 2) + pow(coords[2][1]-coords[1][1], 2)), \
+				   sqrt(pow(coords[2][0]-coords[0][0], 2) + pow(coords[2][1]-coords[0][1], 2)) )
+
+	else:
+		#Split list into two halves
+		firstHalf = []
+		secHalf = []
+		for i in range(0, len(coords)/2): #Note: len(coords)/2 rounds down for odd numbers
+			firstHalf.append(coords[i])
+		for i in range(len(coords)/2, len(coords)):
+			secHalf.append(coords[i])
+
+		#Recurse
+		firstHalfDistance = DandC(firstHalf)
+		secHalfDistance = DandC(secHalf)
+		if (firstHalfDistance <= secHalfDistance):
+			minDist = firstHalfDistance
+		else:
+			minDist = secHalfDistance
+
+		#minDist = (firstHalfDistance if (firstHalfDistance <= secHalfDistance) else secHalfDistance)
+
+		return minDist
+		#Check points around dividing line
+
+shortestDistance = DandC(sortByX)
+print shortestDistance
 
 #As1HelperFunctions.createOutputFile(min_dist, pairs, 1)
