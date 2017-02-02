@@ -31,9 +31,6 @@ def enhanceddnc(xSorted, ySorted):
     elif(len(xSorted) == 2): #Base case
         #pythagoras
         dist = sqrt(pow(xSorted[1][0]-xSorted[0][0], 2) + pow(xSorted[1][1]-xSorted[0][1], 2))
-        print("Hey >")
-        print(xSorted)
-        
         return [xSorted, dist]
     elif(len(xSorted) == 3): #Base case for odd numbers
         a = xSorted[0]
@@ -77,10 +74,6 @@ def enhanceddnc(xSorted, ySorted):
             i = i + 1
         
         #Recursive step
-        prn.pprint(leftXsorted)
-        print("___________________")
-        prn.pprint(rightXsorted)
-        print("+++++++++++++++++++")
         leftRet = enhanceddnc(leftXsorted,leftYsorted)
         rightRet = enhanceddnc(rightYsorted, rightYsorted)
         
