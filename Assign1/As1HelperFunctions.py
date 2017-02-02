@@ -40,6 +40,11 @@ def createOutputFile(minDistance, myPoints, AlgFlag):
 		print "Error creating output file, fix AlgFlag"
 
 	outFile.write(str(minDistance)+"\n")
-	outFile.write("\n".join(map(lambda x: str(x), myPoints)))
-	outFile.write("\n")
+	myPoints.sort()
+	for pair in myPoints:
+                for coord in pair:
+                        for val in coord:
+                                outFile.write(str(val))
+                                outFile.write(" ")
+                outFile.write("\n")
 	outFile.close()
