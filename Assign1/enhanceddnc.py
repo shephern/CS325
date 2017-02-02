@@ -5,14 +5,12 @@
 #   and d is the min of left and right side
 #5. Return minimum distance, eliminating points that excede (p+-d,p+-d)
 
-#import As1HelperFunctions
-import Untitled
+import As1HelperFunctions
 import pprint as prn
 from math import sqrt
 testing = True
 
-#p = As1HelperFunctions.getMyPoints()
-rawPoints = Untitled.tester("example.input")
+rawPoints = As1HelperFunctions.getMyPoints()
 sortByX = sorted(rawPoints, key=lambda x: x[0])
 sortByY = sorted(rawPoints, key=lambda y: y[1])
 
@@ -31,22 +29,22 @@ def enhanceddnc(xSorted, ySorted):
     elif(len(xSorted) == 2): #Base case
         #pythagoras
         dist = sqrt(pow(xSorted[1][0]-xSorted[0][0], 2) + pow(xSorted[1][1]-xSorted[0][1], 2))
-        return [xSorted, dist]
+        return [[(tuple(xSorted[0]),tuple(xSorted[1]))], dist]
     elif(len(xSorted) == 3): #Base case for odd numbers
-        a = xSorted[0]
-        b = xSorted[1]
-        c = xSorted[2]
+        a = tuple(xSorted[0])
+        b = tuple(xSorted[1])
+        c = tuple(xSorted[2])
         abDist = sqrt(pow(xSorted[1][0]-xSorted[0][0], 2) + pow(xSorted[1][1]-xSorted[0][1], 2))
         acDist = sqrt(pow(xSorted[2][0]-xSorted[0][0], 2) + pow(xSorted[2][1]-xSorted[0][1], 2))
         bcDist = sqrt(pow(xSorted[2][0]-xSorted[1][0], 2) + pow(xSorted[2][1]-xSorted[1][1], 2))
         retPairs = []
         minDist = min([abDist, acDist, bcDist])
         if abDist == minDist:
-            retPairs.append([a,b])
+            retPairs.append((a,b))
         if acDist == minDist:
-            retPairs.append([a,c])
+            retPairs.append((a,c))
         if bcDist == minDist:
-            retPairs.append([b,c])
+            retPairs.append((b,c))
         return [retPairs, minDist]
     else:
         #Compute seperation line
@@ -81,10 +79,9 @@ def enhanceddnc(xSorted, ySorted):
         #Combination step
         minDist = min(leftRet[1], rightRet[1])
         if leftRet[1] == minDist:
-            pairs.append(leftRet[0])
+            pairs.extend(leftRet[0])
         if rightRet[1] == minDist:
-            pairs.append(rightRet[0])
-            
+            pairs.extend(rightRet[0])
         checkY = []
         
         i = 0
@@ -108,11 +105,17 @@ def enhanceddnc(xSorted, ySorted):
                     dist = sqrt(pow(checkY[p][0]-checkY[q][0], 2) + pow(checkY[p][1]-checkY[q][1], 2))
                     if dist < minDist:
                         #New minimum
-                        pairs = [checkY[p],checkY[q]]
+                        pairs = [(tuple(checkY[p]),tuple(checkY[q]))]
                         minDist = dist
                     elif dist == minDist:
-                        #New pair for same minimum
-                        pairs.append([checkY[p], checkY[q]])
+                        #New pair for same min
+                        if((tuple(checkY[p]), tuple(checkY[q])) not in pairs):
+                            pairs.append((tuple(checkY[p]), tuple(checkY[q])))
                     #Otherwise no change, minimum remains
         return [pairs, minDist]
 
+answer = enhanceddnc(sortByX, sortByY)
+shortestDist = answer[1]
+pairs = list(set(tuple(answer[0])))
+
+As1HelperFunctions.createOutputFile(shortestDist, answer[0], 2)
