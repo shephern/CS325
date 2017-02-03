@@ -3,7 +3,7 @@ from math import sqrt
 
 p = As1HelperFunctions.getMyPoints()
 
-t0 = As1HelperFunctions.getTime()
+# t0 = As1HelperFunctions.getTime()
 
 coords = []
 dists = []
@@ -25,7 +25,7 @@ for z in range(0, len(indices)):
 pairs.sort()
 min_dist = min(dists)
 
-t1 = As1HelperFunctions.getTime()
-As1HelperFunctions.calcTime(t0,t1,0)
+# t1 = As1HelperFunctions.getTime()
+# As1HelperFunctions.calcTime(t0,t1,0)
 
 As1HelperFunctions.createOutputFile(min_dist, pairs, 0)
