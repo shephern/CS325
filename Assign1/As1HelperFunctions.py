@@ -36,6 +36,7 @@ def createOutputFile(minDistance, myPoints, AlgFlag):
 	for pair in myPoints:
                 for coord in pair:
                         for val in coord:
+			   	val = int(val)
                                 outFile.write(str(val))
                                 outFile.write(" ")
                 outFile.write("\n")
