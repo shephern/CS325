@@ -1,0 +1,29 @@
+#!/bin/bash
+
+num=1
+for run in {1..5}
+do
+	python enhanceddnc.py 100V$num
+	((num += 1))
+done
+
+num=1
+for run in {1..5}
+do
+	python enhanceddnc.py 1000V$num
+	((num += 1))
+done
+
+num=1
+for run in {1..5}
+do
+	python enhanceddnc.py 10000V$num
+	((num += 1))
+done
+
+num=1
+for run in {1..5}
+do
+	python enhanceddnc.py 100000V$num
+	((num += 1))
+done
