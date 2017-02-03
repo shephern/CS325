@@ -1,2 +1,1 @@
-Just a readme for this Assign1 Folder
-
+Welcome to the CS325 Assignment1 repository!
