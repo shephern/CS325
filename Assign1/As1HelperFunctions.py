@@ -1,4 +1,5 @@
 import sys
+import time
 inputFile = sys.argv[-1]
 
 if (len(sys.argv) != 2):
@@ -40,3 +41,19 @@ def createOutputFile(minDistance, myPoints, AlgFlag):
                                 outFile.write(" ")
                 outFile.write("\n")
 	outFile.close()
+
+def getTime():
+	return time.time()
+
+def calcTime(t0, t1, AlgFlag):
+	with open("timeLog.txt", "a") as myfile:
+		if(AlgFlag == 0):
+			myfile.write("bruteForce ")
+		elif(AlgFlag == 1):
+			myfile.write("DandC ")
+		else:
+			myfile.write("enhancedDandC ")
+
+		runTime = t1-t0
+		myfile.write(repr(sys.argv[1])+' Time: '+repr(runTime)+'\n')
+		myfile.close()
