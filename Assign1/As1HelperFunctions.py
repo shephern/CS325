@@ -5,16 +5,8 @@ if (len(sys.argv) != 2):
 	print "USAGE: python algorithm.py file.txt"
 	exit();
 
-##with open(inputFile) as f:
-##	content = f.readlines()
-##content = [x.strip() for x in content]
-##
 myPoints = []
-##point = ();
-##for i in range(0, len(content)):
-##	myPoints.append([int(content[i][0]), int(content[i][2])])
 
-# I was able to solve the double, multidigit problem with linesplit
 with open(inputFile) as f:
         content = [word for line in f for word in line.split()]
 i = 0
