@@ -103,7 +103,11 @@ def DandC(coords):
 
 		return minDist
 
+t0 = As1HelperFunctions.getTime()
 answer = DandC(sortByX)
+t1 = As1HelperFunctions.getTime()
+As1HelperFunctions.calcTime(t0,t1,0)
+
 shortestDistance = answer[0]
 pairs = list(set(answer[1]))
 As1HelperFunctions.createOutputFile(shortestDistance, pairs, 1)

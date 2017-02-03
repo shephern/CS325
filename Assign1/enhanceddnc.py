@@ -114,7 +114,11 @@ def enhanceddnc(xSorted, ySorted):
                     #Otherwise no change, minimum remains
         return [pairs, minDist]
 
+t0 = As1HelperFunctions.getTime()
 answer = enhanceddnc(sortByX, sortByY)
+t1 = As1HelperFunctions.getTime()
+As1HelperFunctions.calcTime(t0,t1,0)
+
 shortestDist = answer[1]
 pairs = list(set(tuple(answer[0])))
 
